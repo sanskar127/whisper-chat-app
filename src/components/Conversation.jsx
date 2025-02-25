@@ -9,7 +9,7 @@ const Conversation = ({ conversation, lastIndex }) => {
   const dispatch = useDispatch()
   const selectedConversation = useSelector(state => state.conversation.selectedConversation)
   const onlineUsers = useSelector(state => state.socket.onlineUsers)
-  const isOnline = onlineUsers.includes(conversation._id)
+  const isOnline = onlineUsers.includes(conversation.uname)
 
   const isSelected = selectedConversation?._id === _id
 

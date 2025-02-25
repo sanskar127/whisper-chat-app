@@ -2,18 +2,21 @@
 import { useSelector } from 'react-redux';
 import { useGetMessagesQuery } from '../api/chatApi';
 import toast from 'react-hot-toast';
+import { setMessages } from '../features/Conversation/conversationsSlice';
+import { useDispatch } from 'react-redux';
 
 const useGetMessages = () => {
   const selectedConversation = useSelector(state => state.conversation.selectedConversation);
+  const dispatch = useDispatch();
 
-  const { data: messages = [], isLoading } = useGetMessagesQuery(selectedConversation?._id, {
+  const { data: messages = [] } = useGetMessagesQuery(selectedConversation?._id, {
     skip: !selectedConversation?._id,
     onError: (error) => {
       toast.error(error.message);
     },
   });
 
-  return { messages, isLoading };
+  dispatch(setMessages(messages));
 };
 
 export default useGetMessages;

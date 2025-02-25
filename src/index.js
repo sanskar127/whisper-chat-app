@@ -2,7 +2,6 @@ import { App, server, express } from "./socket/socket.js"
 import cookieParser from "cookie-parser"
 import dotenv from "dotenv"
 import path from "path"
-import cors from "cors"
 import { fileURLToPath } from "url"
 
 import messageRoutes from "./routes/message.routes.js"
